@@ -54,7 +54,7 @@ def transcribe_worker() -> None:
         wav_path = work_q.get()
         try:
             segments, _info = model.transcribe(
-                str(wav_path), language="en", beam_size=1,
+                str(wav_path), beam_size=1,
                 vad_filter=True)
             text = " ".join(s.text.strip() for s in segments).strip()
         except Exception as exc:
